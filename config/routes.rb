@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   get '/book_movies', to: 'static_pages#book_movies'
+  get '/about', to: 'static_pages#about'
 
 
   namespace :admin do

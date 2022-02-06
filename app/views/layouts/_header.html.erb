@@ -2,7 +2,8 @@
   <div class="logo">Cinema Booking Portal</div>
   <div class="navigation">
     <ul>
-      <li><%= link_to "Home", root_path %> </li>
+      <li><%= link_to "Home", root_path %> |  </li>
+      <li><%= link_to "about", about_path %> | </li>
       <% if logged_in? %>
         <% if current_user.user? %>
           <li><%= link_to "Booking", book_movies_path  %> </li>
