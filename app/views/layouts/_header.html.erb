@@ -1,0 +1,31 @@
+<div class="header">
+  <div class="logo">Cinema Booking Portal</div>
+  <div class="navigation">
+    <ul>
+      <li><%= link_to "Home", root_path %> </li>
+      <% if logged_in? %>
+        <% if current_user.user? %>
+          <li><%= link_to "Booking", book_movies_path  %> </li>
+        <% elsif current_user.admin? %>
+          <li><%= link_to "New cinema", new_admin_cinema_path %></li>
+          <li><%= link_to "Cinema Records", admin_tally_path %> </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="account">
+    <% if logged_in? %>
+      <%= link_to "Log out", logout_path, method: :delete %>
+      <%= current_user.first_name %>
+    <% else %>
+      <%= link_to login_path do %>
+        <button class="login">Login</button>
+      <% end %>
+      <%= link_to signup_path do %>
+        <button class="button singup">Sign up</button>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

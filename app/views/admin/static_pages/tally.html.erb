@@ -1,0 +1,5 @@
+<h1>Total Cinema: <%= @cinema.count %> </h1>
+
+  <% @cinema.each do |c| %>
+    <li><%= c.name %> Total Ticket: <%= ticket_count(c.id)%> </li>
+  <% end %>

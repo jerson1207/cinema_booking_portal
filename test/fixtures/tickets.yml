@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cinema: one
+  seat: one
+  time_slot: one
+  user_id: 1
+
+two:
+  cinema: two
+  seat: two
+  time_slot: two
+  user_id: 1
