@@ -1,0 +1,63 @@
+<h1>Title: <%= @cinema.movie_title%></h1>
+<h3>Name of cinema: <%= @cinema.name %></h3>
+
+  <table class="table">
+
+    <tr>
+      <th>TIME </th>
+      <% @cinema.seats.each do |seat|%>
+        <th><%=  seat.name  %> </th>
+      <% end %>
+    </tr>
+    
+    <tr>
+      <td>10 AM</td>
+      <% @cinema.time_slots.where(name: "10 AM").each do |time|%>
+        <% if logged_in? %>
+          <td><%= link_to booked_available(time.ticket.first.user_id), cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
+        <% else %>
+          <td><%= link_to booked_available(time.ticket.first.user_id), login_path %>  </td>
+        <% end %>  
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>4 PM</td>
+      <% @cinema.time_slots.where(name: "4 PM").each do |time|%>
+        <% if logged_in? %>
+          <td><%= link_to booked_available(time.ticket.first.user_id), cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
+        <% else %>
+          <td><%= link_to booked_available(time.ticket.first.user_id), login_path %>  </td>
+        <% end %>  
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>6 PM</td>
+      <% @cinema.time_slots.where(name: "6 PM").each do |time|%>
+        <% if logged_in? %>
+          <td><%= link_to booked_available(time.ticket.first.user_id), cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
+        <% else %>
+          <td><%= link_to booked_available(time.ticket.first.user_id), login_path %>  </td>
+        <% end %>  
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>10 PM</td>
+      <% @cinema.time_slots.where(name: "10 PM").each do |time|%>
+        <% if logged_in? %>
+          <td><%= link_to booked_available(time.ticket.first.user_id), cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
+        <% else %>
+          <td><%= link_to booked_available(time.ticket.first.user_id), login_path %>  </td>
+        <% end %>  
+      <% end %>
+    </tr>
+
+
+    
+    
+  </table>
+
+
+

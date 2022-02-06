@@ -1,13 +1,19 @@
 .header {
   display: flex;
-
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 0;
+  height: 5vh;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
   .logo {
-    font-size: 4rem;
+    font-size: 2rem;
   }
 
   .navigation ul{
     display: flex;
-    font-size: 3rem;
+    font-size: 1.5rem;
     list-style-type: none;
     margin: 0;
     padding: 0;
