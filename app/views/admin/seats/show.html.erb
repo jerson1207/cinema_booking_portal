@@ -1,8 +1,8 @@
 
 <%= link_to "back", admin_cinemas_path %>
 <h1>Cinema name: <%= @cinema.name %> </h1>
-<h2>Seat number: <%= @seat.name %> </h2>
+<h2>Seat: <%= @seat.name %> </h2>
 
 <% @time_slot.each do |time| %>
-<h3>Time Slot:  <%= time.name %>  | Available</h3>
+  <h3>Time Slot:  <%= time.name %>  | <%= book_by(id) %></h3>
 <% end %>

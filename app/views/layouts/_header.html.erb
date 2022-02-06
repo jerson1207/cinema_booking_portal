@@ -2,12 +2,16 @@
   <div class="logo">Cinema Booking Portal</div>
   <div class="navigation">
     <ul>
-      <li><%= link_to "Home", root_path %> |  </li>
-      <li><%= link_to "about", about_path %> | </li>
+      
+      <% unless logged_in? && current_user.admin? %>
+        <li><%= link_to "Home", root_path %> |  </li>
+        <li><%= link_to "about", about_path %> | </li>
+      <% end %>
       <% if logged_in? %>
         <% if current_user.user? %>
           <li><%= link_to "Booking", book_movies_path  %> </li>
         <% elsif current_user.admin? %>
+          <li><%= link_to "home", admin_root_path %></li>
           <li><%= link_to "New cinema", new_admin_cinema_path %></li>
           <li><%= link_to "Cinema Records", admin_tally_path %> </li>
         <% end %>
