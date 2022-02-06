@@ -1,10 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<%= link_to admin_cinemas_path do %>
+  <button>Back</button>
+<% end %>
 
-<%= render @cinema %>
+<br>
+<br>
 
-<div>
-  <%= link_to "Edit this cinema", edit_cinema_path(@cinema) %> |
-  <%= link_to "Back to cinemas", cinemas_path %>
+<h1><%= @cinema.name %> </h1>
+<%= link_to new_admin_cinema_movie_path(@cinema) do %>
+  <button>Add Movie</button>
+<% end %>
 
-  <%= button_to "Destroy this cinema", @cinema, method: :delete %>
-</div>
+<h1>Movies:</h1> 
+<% @cinema.movies.each do |m| %>
+  <h3>  <%= link_to m.title, admin_cinema_movie_path(@cinema, m) %> </h3>
+<% end %>
+
+
+
+

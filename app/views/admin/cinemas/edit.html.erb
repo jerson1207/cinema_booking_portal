@@ -4,7 +4,6 @@
 
 <br>
 
-<div>
-  <%= link_to "Show this cinema", @cinema %> |
-  <%= link_to "Back to cinemas", cinemas_path %>
-</div>
+<%= link_to @cinema do %> 
+  <button>Cancel</button>
+<% end %>

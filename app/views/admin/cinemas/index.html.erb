@@ -1,49 +1,21 @@
-
-<h1>Cinemas</h1>
-
-
+<div class="container-80">
 <br>
-<br>
-<% @cinemas.each do |cinema| %>
-
-  <table class="table">
   
-    <%= cinema.name %> | <%= cinema.movie_title%>
-    <tr>
-      <th><%= link_to "Seat", admin_cinema_seats_path(cinema) %> </th>
-    <% cinema.seats.each do |seat|%>
-      <th><%= link_to seat.name, admin_cinema_seat_path(cinema, seat)  %> </th>
+  <%= link_to new_admin_cinema_path do %>
+    <button>Create Cinema</button>
+  <% end %>
+  <br>
+  <h1>All Cinemas</h1>
+  <% @cinemas.each do |c| %>
+    <h2><%= link_to c.name, admin_cinema_movies_path(c) %> | 
+    <%= link_to admin_cinema_path(c), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+      <button>Delete</button>
     <% end %>
-    </tr>
+    |
+    <%= link_to edit_admin_cinema_path(c) do %>
+      <button>Edit</button>
+    <% end %>
+</h2>
 
-    <tr>
-      <td>10 AM</td>
-      <% cinema.time_slots.where(name: "10 AM").each do |time|%>
-      <td><%= link_to book_by(time.ticket.first.user_id), admin_cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
-      <% end %>
-    </tr>
-
-    <tr>
-      <td>2 PM</td>
-      <% cinema.time_slots.where(name: "4 PM").each do |time|%>
-        <td><%= link_to book_by(time.ticket.first.user_id), admin_cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
-      <% end %>
-    </tr>
-
-    <tr>
-      <td>6 PM</td>
-      <% cinema.time_slots.where(name: "6 PM").each do |time|%>
-        <td><%= link_to book_by(time.ticket.first.user_id), admin_cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
-      <% end %>
-    </tr>
-
-    <tr>
-      <td>10 PM</td>
-      <% cinema.time_slots.where(name: "10 PM").each do |time|%>
-        <td><%= link_to book_by(time.ticket.first.user_id), admin_cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
-      <% end %>
-    </tr>
-    
-  </table>
-<% end %>
-
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+<%= form_with( model: [:admin, @cinema, @movie]) do |form| %>
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.hidden_field :cinema_id, :default => @cinema.id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

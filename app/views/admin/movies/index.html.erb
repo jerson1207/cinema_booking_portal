@@ -1,0 +1,20 @@
+<%= link_to "back", admin_cinemas_path %>
+
+
+
+<h1><%= @cinema.name %> </h1>
+<%= link_to new_admin_cinema_movie_path(@cinema) do %>
+  <button>Add Movie</button>
+<% end %>
+
+
+
+<h1>Movies</h1>
+
+
+<% @movie.each do |m| %>
+  <%= link_to m.title, admin_cinema_movie_path(@cinema, m) %> | 
+  <%= link_to "Edit", edit_admin_cinema_movie_path(@cinema, m) %> |
+  <%= link_to "delete", admin_cinema_movie_path(@cinema, m), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <br>
+<% end %>

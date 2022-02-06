@@ -3,7 +3,7 @@
     <% @cinema.each do |c| %>
       <div class="card">
         <%= image_tag "movie_temp_bg.jpg"%>
-        <h1><%= c.movie_title %> </h1>
+        <h1><%# c.movie_title %> </h1>
         <p class="price">$19.99</p>
         
         <%= link_to cinema_path(c) do %>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :movies
+  
   
   root 'static_pages#home'
   get 'sessions/new'
@@ -29,10 +29,12 @@ Rails.application.routes.draw do
     get '/logout', to: 'sessions#destroy'
     get '/tally', to: 'static_pages#tally'
     root 'cinemas#index'
-    resources :cinemas do
-      resources :seats do
-        resources :time_slots do
-          resources :ticket
+    resources :cinemas, except: :show do
+      resources :movies do
+        resources :seats do
+          resources :time_slots do
+            resources :ticket
+          end
         end
       end
     end
