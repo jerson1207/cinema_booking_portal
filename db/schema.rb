@@ -10,16 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_093810) do
+ActiveRecord::Schema.define(version: 2022_02_06_082215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cinemas", force: :cascade do |t|
     t.string "name"
-    t.string "movie_title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.bigint "cinema_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cinema_id"], name: "index_movies_on_cinema_id"
   end
 
   create_table "seats", force: :cascade do |t|
@@ -27,17 +34,21 @@ ActiveRecord::Schema.define(version: 2022_02_05_093810) do
     t.bigint "cinema_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "movie_id"
     t.index ["cinema_id"], name: "index_seats_on_cinema_id"
+    t.index ["movie_id"], name: "index_seats_on_movie_id"
   end
 
-  create_table "tickets", force: :cascade do |t|  
+  create_table "tickets", force: :cascade do |t|
     t.bigint "cinema_id", null: false
     t.bigint "seat_id", null: false
     t.bigint "time_slot_id", null: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "movie_id", null: false
     t.index ["cinema_id"], name: "index_tickets_on_cinema_id"
+    t.index ["movie_id"], name: "index_tickets_on_movie_id"
     t.index ["seat_id"], name: "index_tickets_on_seat_id"
     t.index ["time_slot_id"], name: "index_tickets_on_time_slot_id"
   end
@@ -48,7 +59,9 @@ ActiveRecord::Schema.define(version: 2022_02_05_093810) do
     t.bigint "cinema_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "movie_id", null: false
     t.index ["cinema_id"], name: "index_time_slots_on_cinema_id"
+    t.index ["movie_id"], name: "index_time_slots_on_movie_id"
     t.index ["seat_id"], name: "index_time_slots_on_seat_id"
   end
 
@@ -63,10 +76,14 @@ ActiveRecord::Schema.define(version: 2022_02_05_093810) do
     t.integer "role", default: 0
   end
 
+  add_foreign_key "movies", "cinemas"
   add_foreign_key "seats", "cinemas"
+  add_foreign_key "seats", "movies"
   add_foreign_key "tickets", "cinemas"
+  add_foreign_key "tickets", "movies"
   add_foreign_key "tickets", "seats"
   add_foreign_key "tickets", "time_slots"
   add_foreign_key "time_slots", "cinemas"
+  add_foreign_key "time_slots", "movies"
   add_foreign_key "time_slots", "seats"
 end
