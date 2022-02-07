@@ -3,3 +3,18 @@
   <% @cinema.each do |c| %>
     <li><%= c.name %> Total Ticket: <%= ticket_count(c.id)%> </li>
   <% end %>
+
+
+<% @cinema.each do |c| %>
+<table class="table">
+  <caption><%= c.name %></caption>
+  <tr>
+    <th>Movies</th>
+  </tr>
+  <% c.movies.each do |m| %>
+  <tr>
+    <td> <%= m.title %> </td>
+  </tr>
+  <% end %>
+</table>
+<% end %>

@@ -8,6 +8,9 @@
   <h1>All Cinemas</h1>
   <% @cinemas.each do |c| %>
     <h2><%= link_to c.name, admin_cinema_movies_path(c) %> | 
+    <h2> Registered Movies: <%= registered_movies(c.id) %> </h2>
+    <h2> Total Sold Ticet for this Cinema: <%= total_booking_cinema(c.id) %> </h2>
+    
     <%= link_to admin_cinema_path(c), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
       <button>Delete</button>
     <% end %>
@@ -15,6 +18,7 @@
     <%= link_to edit_admin_cinema_path(c) do %>
       <button>Edit</button>
     <% end %>
+    <br>* * *<br>
 </h2>
 
   <% end %>
