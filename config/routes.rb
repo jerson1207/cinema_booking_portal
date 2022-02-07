@@ -11,12 +11,18 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :cinemas, only: [:index, :show] do
-    resources :seats do
-      resources :time_slots do
-        resources :ticket
+    resources :movies do
+      resources :seats do
+        resources :time_slots do
+          resources :ticket
+        end
       end
     end
   end
+  
+    
+
+
 
   get '/book_movies', to: 'static_pages#book_movies'
   get '/about', to: 'static_pages#about'
@@ -31,11 +37,11 @@ Rails.application.routes.draw do
     root 'cinemas#index'
     resources :cinemas, except: :show do
       resources :movies do
-        resources :seats do
-          resources :time_slots do
-            resources :ticket
-          end
-        end
+          resources :seats do
+            resources :time_slots do
+              resources :ticket
+            end
+          end 
       end
     end
   end

@@ -9,6 +9,12 @@ class Admin::MoviesController < ApplicationController
   def show
     @cinema = Cinema.find(params[:cinema_id])
     @movie = @cinema.movies.find(params[:id])
+
+    @seat = Seat.where(cinema_id: @cinema.id, movie_id: @movie.id)
+    @time_10am = @movie.time_slots.where(name: "10 AM")
+    @time_2pm = @movie.time_slots.where(name: "2 PM")
+    @time_6pm = @movie.time_slots.where(name: "6 PM")
+    @time_10pm = @movie.time_slots.where(name: "10 PM")
   end
 
   def new
@@ -32,7 +38,7 @@ class Admin::MoviesController < ApplicationController
         if ts1.save
           Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat1.id, time_slot_id: ts1.id )
         end
-        ts2 = TimeSlot.new(name: "4 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat1.id )
+        ts2 = TimeSlot.new(name: "2 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat1.id )
         if ts2.save
           Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat1.id, time_slot_id: ts2.id )
         end
@@ -52,7 +58,7 @@ class Admin::MoviesController < ApplicationController
         if ts1.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat2.id, time_slot_id: ts1.id )
         end
-        ts2 = TimeSlot.new(name: "4 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat2.id )
+        ts2 = TimeSlot.new(name: "2 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat2.id )
         if ts2.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat2.id, time_slot_id: ts2.id )
         end
@@ -73,7 +79,7 @@ class Admin::MoviesController < ApplicationController
         if ts1.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat3.id, time_slot_id: ts1.id )
         end
-        ts2 = TimeSlot.new(name: "4 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat3.id )
+        ts2 = TimeSlot.new(name: "2 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat3.id )
         if ts2.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat3.id, time_slot_id: ts2.id )
         end
@@ -93,7 +99,7 @@ class Admin::MoviesController < ApplicationController
         if ts1.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat4.id, time_slot_id: ts1.id )
         end
-        ts2 = TimeSlot.new(name: "4 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat4.id )
+        ts2 = TimeSlot.new(name: "2 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat4.id )
         if ts2.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat4.id, time_slot_id: ts2.id )
         end
@@ -113,7 +119,7 @@ class Admin::MoviesController < ApplicationController
         if ts1.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat5.id, time_slot_id: ts1.id )
         end
-        ts2 = TimeSlot.new(name: "4 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat5.id )
+        ts2 = TimeSlot.new(name: "2 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat5.id )
         if ts2.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat5.id, time_slot_id: ts2.id )
         end
@@ -133,7 +139,7 @@ class Admin::MoviesController < ApplicationController
         if ts1.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat6.id, time_slot_id: ts1.id )
         end
-        ts2 = TimeSlot.new(name: "4 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat6.id )
+        ts2 = TimeSlot.new(name: "2 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat6.id )
         if ts2.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat6.id, time_slot_id: ts2.id )
         end
@@ -153,7 +159,7 @@ class Admin::MoviesController < ApplicationController
         if ts1.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat7.id, time_slot_id: ts1.id )
         end
-        ts2 = TimeSlot.new(name: "4 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat7.id )
+        ts2 = TimeSlot.new(name: "2 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat7.id )
         if ts2.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat7.id, time_slot_id: ts2.id )
         end
@@ -173,7 +179,7 @@ class Admin::MoviesController < ApplicationController
         if ts1.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat8.id, time_slot_id: ts1.id )
         end
-        ts2 = TimeSlot.new(name: "4 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat8.id )
+        ts2 = TimeSlot.new(name: "2 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat8.id )
         if ts2.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat8.id, time_slot_id: ts2.id )
         end
@@ -193,7 +199,7 @@ class Admin::MoviesController < ApplicationController
         if ts1.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat9.id, time_slot_id: ts1.id )
         end
-        ts2 = TimeSlot.new(name: "4 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat9.id )
+        ts2 = TimeSlot.new(name: "2 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat9.id )
         if ts2.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat9.id, time_slot_id: ts2.id )
         end
@@ -213,7 +219,7 @@ class Admin::MoviesController < ApplicationController
         if ts1.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat10.id, time_slot_id: ts1.id )
         end
-        ts2 = TimeSlot.new(name: "4 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat10.id )
+        ts2 = TimeSlot.new(name: "2 PM", cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat10.id )
         if ts2.save
             Ticket.create(cinema_id: @cinema.id, movie_id: @movie.id, seat_id: seat10.id, time_slot_id: ts2.id )
         end

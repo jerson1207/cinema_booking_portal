@@ -1,5 +1,6 @@
+<%= link_to "back", admin_cinema_movie_path(@cinema, @movie)%>
 <h1>Cinema: <%= @cinema.name %> </h1>
-<h2>Movie: <%= @cinema.movie_title %> </h2>
+<h2>Movie: <%= @movie.title %> </h2>
 <h2>Seat: <%= @seat.name %> </h2>
 <h2>Time: <%= @time_slot.name  %> </h2>
 <h2>Book: <%= book_by(@ticket.user_id) %>  </h2>

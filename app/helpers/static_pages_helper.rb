@@ -1,8 +1,8 @@
 module StaticPagesHelper
 
   def display_movie_title(id)
-    cinema = Cinema.find(id)
-    cinema.movie_title
+    movie = Movie.find(id)
+    movie.title
   end
 
   def display_cinema_name(id)

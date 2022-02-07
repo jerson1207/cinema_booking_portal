@@ -1,12 +1,43 @@
 <%= link_to "back", admin_cinema_movies_path(@cinema) %>
 <p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
+  <h2>Title: <%= @movie.title %></h2>
+  <h2>Cinema: <%= @cinema.name %> </h2>
+  <h2>Sold Ticket: <%= sold_ticket(@cinema, @movie) %> </h2>
+  <h2>Remaining Ticket <%= remaining_ticket(@cinema, @movie) %> </h2>
+  
 </p>
 
-<div>
-  <%# link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%# link_to "Back to movies", movies_path %>
 
-  <%#button_to "Destroy this movie", @movie, method: :delete %>
-</div>
+
+<table class="table">
+  <tr>
+    <th>Time</th>
+    <% @seat.each do |s| %>
+      <th><%= s.name %></th>
+    <% end %>
+  </tr>
+  <tr>
+    <th><p>10 AM</p></th>
+    <% @time_10am.each do |s| %>
+      <th><%= link_to book_by(s.ticket.first.user_id), admin_cinema_movie_seat_time_slot_ticket_path(@cinema, @movie, s.seat_id, s.id, s.id ) %></th>
+    <% end %>
+  </tr>
+  <tr>
+    <th><p>2 PM</p></th>
+    <% @time_2pm.each do |s| %>
+     <th><%= link_to book_by(s.ticket.first.user_id), admin_cinema_movie_seat_time_slot_ticket_path(@cinema, @movie, s.seat_id, s.id, s.id ) %></th>
+    <% end %>
+  </tr>
+  <tr>
+    <th><p>6 PM</p></th>
+    <% @time_6pm.each do |s| %>
+      <th><%= link_to book_by(s.ticket.first.user_id), admin_cinema_movie_seat_time_slot_ticket_path(@cinema, @movie, s.seat_id, s.id, s.id ) %></th>
+    <% end %>
+  </tr>
+  <tr>
+    <th><p>10 PM</p></th>
+    <% @time_10pm.each do |s| %>
+     <th><%= link_to book_by(s.ticket.first.user_id), admin_cinema_movie_seat_time_slot_ticket_path(@cinema, @movie, s.seat_id, s.id, s.id ) %></th>
+    <% end %>
+  </tr>
+</table>

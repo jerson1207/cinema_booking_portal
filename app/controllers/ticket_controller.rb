@@ -7,7 +7,8 @@ class TicketController < ApplicationController
   def show
     
     @cinema = Cinema.find(params[:cinema_id])
-    @seat = @cinema.seats.find(params[:seat_id])
+    @movie = @cinema.movies.find(params[:movie_id])
+    @seat = @movie.seats.find(params[:seat_id])
     @time_slot = @seat.time_slots.find(params[:time_slot_id])
     @ticket = @time_slot.ticket.find(params[:id])
     if current_user.user? && @ticket.user_id.nil?

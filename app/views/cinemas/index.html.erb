@@ -1,61 +1,14 @@
-
-<h1>Cinemas</h1>
-<% @cinemas.each do |cinema| %>
-  <table class="table">
-    <caption><%= cinema.movie_title%> @ <%= cinema.name %></caption>
-  
+<% @cinemas.each do |c| %>
+  <h1>Movies Available at <%= c.name %></h1>
+  <% c.movies.each do |movie| %>
+    <div class="card">
+      <%= image_tag "movie_temp_bg.jpg"%>
+      <h1><%= movie.title %> </h1>
+      <p class="price"><%= c.name %></p>
       
-    <tr>
-      <th>TIME </th>
-    <% cinema.seats.each do |seat|%>
-      <th><%=  seat.name  %> </th>
-    <% end %>
-    </tr>
-
-    <tr>
-      <td>10 AM</td>
-      <% cinema.time_slots.where(name: "10 AM").each do |time|%>
-        <% if logged_in? %>
-          <td><%= link_to booked_available(time.ticket.first.user_id), cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
-        <% else %>
-          <td><%= link_to booked_available(time.ticket.first.user_id), login_path %>  </td>
-        <% end %>  
+      <%= link_to cinema_movie_path(c, movie) do %>
+        <p><button>Book Now!</button></p>
       <% end %>
-    </tr>
-
-    <tr>
-      <td>4 PM</td>
-      <% cinema.time_slots.where(name: "4 PM").each do |time|%>
-        <% if logged_in? %>
-          <td><%= link_to booked_available(time.ticket.first.user_id), cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
-        <% else %>
-          <td><%= link_to booked_available(time.ticket.first.user_id), login_path %>  </td>
-        <% end %>  
-      <% end %>
-    </tr>
-
-    <tr>
-      <td>6 PM</td>
-      <% cinema.time_slots.where(name: "6 PM").each do |time|%>
-        <% if logged_in? %>
-          <td><%= link_to booked_available(time.ticket.first.user_id), cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
-        <% else %>
-          <td><%= link_to booked_available(time.ticket.first.user_id), login_path %>  </td>
-        <% end %>  
-      <% end %>
-    </tr>
-
-    <tr>
-      <td>10 PM</td>
-      <% cinema.time_slots.where(name: "10 PM").each do |time|%>
-        <% if logged_in? %>
-          <td><%= link_to booked_available(time.ticket.first.user_id), cinema_seat_time_slot_ticket_path(time.cinema_id, time.seat_id, time.id, time.id ) %> </td>
-        <% else %>
-          <td><%= link_to booked_available(time.ticket.first.user_id), login_path %>  </td>
-        <% end %>  
-      <% end %>
-    </tr>
-    
-  </table>
+    </div>
+  <% end %>
 <% end %>
-

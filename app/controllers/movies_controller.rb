@@ -1,13 +1,20 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
 
-  # GET /movies or /movies.json
+
   def index
     @movies = Movie.all
   end
 
-  # GET /movies/1 or /movies/1.json
   def show
+    @cinema = Cinema.find(params[:cinema_id])
+    @movie = @cinema.movies.find(params[:id])
+
+    @seat = Seat.where(cinema_id: @cinema.id, movie_id: @movie.id)
+    @time_10am = @movie.time_slots.where(name: "10 AM")
+    @time_2pm = @movie.time_slots.where(name: "2 PM")
+    @time_6pm = @movie.time_slots.where(name: "6 PM")
+    @time_10pm = @movie.time_slots.where(name: "10 PM")
   end
 
   # GET /movies/new
