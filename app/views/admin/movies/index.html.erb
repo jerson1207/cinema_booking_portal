@@ -1,20 +1,47 @@
+<div class="container-80">
 <%= link_to "back", admin_cinemas_path %>
 
+<div class="head">
+  <div class="left">
+    <h1><%= @cinema.name %></h1>      
+  </div>
+  
+  <div class="center">
+    <h1>Movie: <%= @movie.all.count%> </h1>
+  </div>
+  
+  <div class="create_new">
+    <%= link_to new_admin_cinema_movie_path(@cinema) do %>
+      <button>Add Movie</button>
+    <% end %>
+  </div>
+</div>
+  <table class="table_cinema table">
+    <tr>
+      <th>Name</th>
+      <th>Ticket Sold</th>
+      <th colspan="2">Action</th>
+    </tr>
+    <% @movie.each do |m| %>
+    <tr>
+      <td><%= link_to m.title, admin_cinema_movie_path(@cinema, m) %></td>
+      <td></td>
+      <td> <%= link_to "Edit", edit_admin_cinema_movie_path(@cinema, m) %> </td>
+      <td> <%= link_to "delete", admin_cinema_movie_path(@cinema, m), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> </td>
+    </tr>
+    <% end %>
+
+  </table>
 
 
-<h1><%= @cinema.name %> </h1>
-<%= link_to new_admin_cinema_movie_path(@cinema) do %>
-  <button>Add Movie</button>
-<% end %>
 
 
 
-<h1>Movies</h1>
 
 
-<% @movie.each do |m| %>
-  <%= link_to m.title, admin_cinema_movie_path(@cinema, m) %> | 
-  <%= link_to "Edit", edit_admin_cinema_movie_path(@cinema, m) %> |
-  <%= link_to "delete", admin_cinema_movie_path(@cinema, m), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-  <br>
-<% end %>
+
+
+
+
+
+</div>

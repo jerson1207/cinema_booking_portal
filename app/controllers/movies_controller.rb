@@ -9,24 +9,21 @@ class MoviesController < ApplicationController
   def show
     @cinema = Cinema.find(params[:cinema_id])
     @movie = @cinema.movies.find(params[:id])
-
     @seat = Seat.where(cinema_id: @cinema.id, movie_id: @movie.id)
+    @time_slot = TimeSlot.all
     @time_10am = @movie.time_slots.where(name: "10 AM")
     @time_2pm = @movie.time_slots.where(name: "2 PM")
     @time_6pm = @movie.time_slots.where(name: "6 PM")
     @time_10pm = @movie.time_slots.where(name: "10 PM")
   end
 
-  # GET /movies/new
   def new
     @movie = Movie.new
   end
 
-  # GET /movies/1/edit
   def edit
   end
 
-  # POST /movies or /movies.json
   def create
     @movie = Movie.new(movie_params)
 
@@ -41,7 +38,6 @@ class MoviesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /movies/1 or /movies/1.json
   def update
     respond_to do |format|
       if @movie.update(movie_params)
@@ -54,7 +50,6 @@ class MoviesController < ApplicationController
     end
   end
 
-  # DELETE /movies/1 or /movies/1.json
   def destroy
     @movie.destroy
 
@@ -65,12 +60,12 @@ class MoviesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_movie
       @movie = Movie.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+
     def movie_params
       params.require(:movie).permit(:title, :cinema_id)
     end

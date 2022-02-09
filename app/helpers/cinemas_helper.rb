@@ -6,7 +6,8 @@ module CinemasHelper
   end
 
   def total_booking_cinema(id)
-    Ticket.where(cinema_id: id, user_id: present?).count
+
+    Cinema.find(id).ticket.all.count -  Cinema.find(id).ticket.where(user_id: nil).count
     # Ticket.where(cinema_id: cinema, movie_id: movie, user_id: nil).count
   end
 

@@ -1,10 +1,10 @@
 <%= form_with model: [:admin, @cinema] do |form| %>
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%# form.label :name, style: "display: block" %>
+    <%= form.text_field :name, class: 'form-control', placeholder: "Name of Cinema" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Create Cinema", class: " btn-primary"  %>
   </div>
 <% end %>

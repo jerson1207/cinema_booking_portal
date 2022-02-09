@@ -1,14 +1,17 @@
-<% @cinemas.each do |c| %>
-  <h1>Movies Available at <%= c.name %></h1>
-  <% c.movies.each do |movie| %>
-    <div class="card">
-      <%= image_tag "movie_temp_bg.jpg"%>
-      <h1><%= movie.title %> </h1>
-      <p class="price"><%= c.name %></p>
-      
-      <%= link_to cinema_movie_path(c, movie) do %>
-        <p><button>Book Now!</button></p>
-      <% end %>
-    </div>
+<div class="container-80 all_cinemas">
+  <% @cinemas.each do |c| %>
+    <h1 class= "title" >Movies Available at <%= c.name %></h1>
+    <% c.movies.each do |movie| %>
+      <div class="card">
+        <%= image_tag "movie_temp_bg.jpg"%>
+        <h1><%= movie.title %> </h1>
+        <p class="price"><%= c.name %></p>
+        
+        <%= link_to cinema_movie_path(c, movie) do %>
+          <p><button>Book Now!</button></p>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+
+</div>

@@ -1,9 +1,10 @@
-
-<% @ticket.each do |details| %>
-  Movie: <%= display_movie_title(details.movie_id ) %> <br>
-  cinema: <%= display_cinema_name(details.cinema_id) %> <br>
-  Time: <%= display_time_slot(details.time_slot_id) %> <br>
-  <%= display_seat(details.seat_id) %> <br>
-  <br>
-  <br>
-<% end %>
+<div class="container-80 booking_movies ">
+  <% @ticket.each do |details| %>
+    Movie: <%= display_movie_title(details.movie_id ) %> <br>
+    Cinema: <%= display_cinema_name(details.cinema_id) %> <br>
+    Time: <%= display_time_slot(details.time_slot_id) %> <br>
+    <%= display_seat(details.seat_id) %> <br>
+    <br>
+    <br>
+  <% end %>
+</div>

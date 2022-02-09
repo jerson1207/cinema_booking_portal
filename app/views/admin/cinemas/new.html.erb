@@ -1,3 +1,8 @@
-<%= link_to "Back to cinemas", admin_cinemas_path %>
-<h1>New cinema</h1>
-<%= render "form", cinema: @cinema %>
+<div class="container-80 new_cinema">
+
+  <%= link_to "Back", admin_cinemas_path, class: "btn" %>
+  
+  <h1 class="title">New cinema</h1>
+  <%= render "form", cinema: @cinema %>
+
+</div>

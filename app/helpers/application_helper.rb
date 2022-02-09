@@ -5,15 +5,15 @@ module ApplicationHelper
       user = User.find(id)
       "#{user.first_name} #{user.last_name}"
     else
-      "AVAILABLE"
+      image_tag("Rectangle_dark.svg", height: 20, width: 20)
     end
   end
 
   def booked_available(id)
     if id.present?
-      "SOLD"
+      image_tag("Rectangle_light.svg", height: 20, width: 20) 
     else
-      "AVAILABLE"
+      image_tag("Rectangle_dark.svg", height: 20, width: 20)
     end
   end
 

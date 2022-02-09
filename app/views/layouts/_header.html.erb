@@ -1,5 +1,10 @@
 <div class="header">
-  <div class="logo">Cinema Booking Portal</div>
+ <% unless logged_in? && current_user.admin? %>
+   <div class="logo"><%= link_to "Cinema Booking Portal", root_path %> </div>
+<% else %>
+  <div class="logo"><%= link_to "Dashboard", admin_root_path %> </div>
+ <% end %>
+ 
   <div class="navigation">
     <ul>
       
@@ -12,9 +17,7 @@
           <li><%= link_to "My Booking", book_movies_path  %>  | </li>
           <li><%= link_to "All Cinema", cinemas_path  %>  | </li>
         <% elsif current_user.admin? %>
-          <li><%= link_to "Home", admin_root_path %> | </li>
-          <li><%= link_to "New cinema", new_admin_cinema_path %> | </li>
-          <li><%= link_to "Cinema Records", admin_tally_path %> | </li>
+          <li><%# link_to "Dashboard", admin_root_path %>  </li>
         <% end %>
       <% end %>
     </ul>
@@ -26,7 +29,7 @@
       <%= current_user.first_name %>
     <% else %>
       <%= link_to login_path do %>
-        <button class="login">Login</button>
+        <button class=>Login</button>
       <% end %>
       <%= link_to signup_path do %>
         <button class="button singup">Sign up</button>

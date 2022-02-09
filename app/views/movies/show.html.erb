@@ -1,13 +1,12 @@
-<%= link_to "back", root_path %>
+<div class="container-80 show_movies">
+<%# link_to "back", root_path %>
 <p>
   <h2>Title: <%= @movie.title %></h2>
   <h2>Cinema: <%= @cinema.name %> </h2>
-  <h2>Sold Ticket: <%= sold_ticket(@cinema, @movie) %> </h2>
-  <h2>Remaining Ticket <%= remaining_ticket(@cinema, @movie) %> </h2>
-  
+  <h2>Ticket: <%= remaining_ticket(@cinema, @movie) %> / <%= @time_slot.count %> </h2>
 </p>
 
-==========================
+
 <table class="table">
   <tr>
     <th>Time</th>
@@ -56,3 +55,5 @@
     <% end %>
   </tr>
 </table>
+
+</div>
