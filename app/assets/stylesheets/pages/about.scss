@@ -1,0 +1,44 @@
+.about {
+  margin-top: 5rem;
+  font-family: 'Open Sans', sans-serif;
+  font-style: italic;
+
+  .title {
+    font-size: 3rem;
+    text-align: center;
+  }
+  fieldset {
+    margin-top: 3rem;
+    padding: 1rem;
+  }
+  legend {
+    font-size: 2.4rem;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+
+  }
+  h1 {
+    font-size: 2.0rem;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .img-50 img {
+    width: 50%;
+  }
+  .img-100 img {
+    width: 100PX;
+  }
+}
+
+.newspaper {
+  column-count: 2;
+  column-gap: 40px;
+  column-rule-style: solid;
+  column-rule-width: 1px;
+  column-rule-color: lightblue;
+  
+}

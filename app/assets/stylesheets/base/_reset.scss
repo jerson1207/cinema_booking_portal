@@ -14,3 +14,14 @@ html{
   scroll-behavior: smooth;
   scroll-padding-top: 8.5rem;
 }
+
+fieldset {
+  border: 1px solid green;
+  border-radius: 5px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;1,300;1,600&family=Poppins:ital,wght@0,100;0,400;0,900;1,100&family=Source+Code+Pro:ital,wght@0,900;1,900&display=swap');
+
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Poppins', sans-serif;
+// font-family: 'Source Code Pro', monospace;
